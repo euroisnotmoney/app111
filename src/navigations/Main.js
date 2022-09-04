@@ -12,7 +12,13 @@ const Main = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTitleAlign: 'center',
+        headerTitleStyle:{
+          fontWeight: 'bold',
+
+        },
+        headerStyle: {
+          backgroundColor: theme.background,
+          borderBottomColor: '#d4e6ff',},
         headerTintColor: theme.text,
         headerBackTitleVisible: false,
         cardStyle: { backgroundColor: theme.background },

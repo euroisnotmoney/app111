@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { ThemeContext } from 'styled-components/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { ChannelList, Profile } from '../screens';
+import { ChannelList, Profile, Timer } from '../screens';
+import Todo from '../screens/Todo';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
@@ -10,7 +11,7 @@ const TabIcon = ({ name, focused, color }) => {
   return (
     <MaterialCommunityIcons
       name={name}
-      size={26}
+      size={25}
       color={focused ? theme.tabBarActiveTintColor : theme.tabBarInactiveTintColor}
     />
   );
@@ -37,7 +38,7 @@ const Home = ({ navigation, route }) => {
   return (
     <Tab.Navigator 
       screenOptions={{ 
-        headerShown: false,
+        headerShown:false,
         tabBarStyle: {
           backgroundColor: '#d4e6ff',
           borderTopColor: '#d4e6ff',
@@ -71,8 +72,8 @@ const Home = ({ navigation, route }) => {
             }),
         }}/>
       <Tab.Screen
-        name="Timer"
-        component={Profile}
+        name="POMODORO"
+        component={Timer}
         options={{
           tabBarIcon: props =>
             TabIcon({
@@ -83,8 +84,8 @@ const Home = ({ navigation, route }) => {
         }}
       />
       <Tab.Screen
-        name="Todo"
-        component={Profile}
+        name="Todo List"
+        component={Todo}
         options={{
           tabBarIcon: props =>
             TabIcon({

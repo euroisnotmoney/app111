@@ -18,6 +18,7 @@ const getDateOrTime = ts => {
   return moment(ts).format(now.diff(target, 'day') > 0 ? 'MM/DD' : 'HH:mm');
 };
 
+
 const ItemContainer = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
@@ -89,6 +90,7 @@ const ChannelList = ({ navigation }) => {
 
   return (
     <Container>
+      
       <FlatList
         data={channels}
         renderItem={({ item }) => (
