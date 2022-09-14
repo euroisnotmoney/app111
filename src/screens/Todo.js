@@ -34,97 +34,97 @@ const Todo=()=>{
     const width = Dimensions.get("window").width;
   
 
-    const[tasks, setTasks] = useState({});
+//     const[tasks, setTasks] = useState({});
   
-    const _saveTasks =async tasks => {
-      try {
-        await AsyncStorage.setItem("tasks", JASON.stringify(tasks));
-        setTasks(tasks);
-      } catch (e){
-        //console.error(e);
-      }
-    };
+//     const _saveTasks =async tasks => {
+//       try {
+//         await AsyncStorage.setItem("tasks", JASON.stringify(tasks));
+//         setTasks(tasks);
+//       } catch (e){
+//         //console.error(e);
+//       }
+//     };
   
-    const _loadTasks = async()=>{
-      const loadedTasks=await AsyncStorage.getItem("tasks");
-      setTasks(JSON.parse(loadedTasks || "{}"));
-    };
-    const[newTask, setNewTask] = useState("");
+//     const _loadTasks = async()=>{
+//       const loadedTasks=await AsyncStorage.getItem("tasks");
+//       setTasks(JSON.parse(loadedTasks || "{}"));
+//     };
+//     const[newTask, setNewTask] = useState("");
 
-    const _addTask =()=>{
-      if (newTask.length < 1) {
-        return;
-      }
-      const ID=Date.now().toString();
-      const newTaskObject={
-        [ID]:{id:ID, text:newTask, completed:false},
-      }
-      /*alert(`Add: ${newTask}`); */
-      setNewTask('');
-      setTasks({...tasks, ...newTaskObject});
-    };
+//     const _addTask =()=>{
+//       if (newTask.length < 1) {
+//         return;
+//       }
+//       const ID=Date.now().toString();
+//       const newTaskObject={
+//         [ID]:{id:ID, text:newTask, completed:false},
+//       }
+//       /*alert(`Add: ${newTask}`); */
+//       setNewTask('');
+//       setTasks({...tasks, ...newTaskObject});
+//     };
   
-    const _deleteTask = id => {
-      const currentTasks =Object.assign({}, tasks);
-      delete currentTasks[id];
-      setTasks(currentTasks);
-    };
+//     const _deleteTask = id => {
+//       const currentTasks =Object.assign({}, tasks);
+//       delete currentTasks[id];
+//       setTasks(currentTasks);
+//     };
   
-    const _toggleTask = id=>{
-      const currentTasks =Object.assign({}, tasks);
-      currentTasks[id]['completed'] = !currentTasks[id]['completed'];
-      setTasks(currentTasks);
-    };
+//     const _toggleTask = id=>{
+//       const currentTasks =Object.assign({}, tasks);
+//       currentTasks[id]['completed'] = !currentTasks[id]['completed'];
+//       setTasks(currentTasks);
+//     };
   
-    const _updateTask = item =>{
-      const currentTasks =Object.assign({}, tasks);
-      currentTasks[item.id]=item;
-      setTasks(currentTasks);
-    }
+//     const _updateTask = item =>{
+//       const currentTasks =Object.assign({}, tasks);
+//       currentTasks[item.id]=item;
+//       setTasks(currentTasks);
+//     }
   
-    /**const _handleTextChange =(text)=>{
-      setNewTask(text);
-    };
+//     /**const _handleTextChange =(text)=>{
+//       setNewTask(text);
+//     };
   
-    const _onBlur=()=>{
-      setNewTask("");
-    };*/
+//     const _onBlur=()=>{
+//       setNewTask("");
+//     };*/
     
   
-    return  (
+//     return  (
       
-      <ThemeProvider theme={theme}>
-        <Container>
-          <StatusBar
-          barStyle="light-content"
-          backgroundColor="#ffffff"/>
+//       <ThemeProvider theme={theme}>
+//         <Container>
+//           <StatusBar
+//           barStyle="light-content"
+//           backgroundColor="#ffffff"/>
   
-          <Input
-            placeholder="+"
-            value={newTask}
-            onChangeText={text=>setNewTask(text)}
-            onSubmitEditing={_addTask}
-            onBlur={()=>setNewTask('')}
-          />
+//           <Input
+//             placeholder="+"
+//             value={newTask}
+//             onChangeText={text=>setNewTask(text)}
+//             onSubmitEditing={_addTask}
+//             onBlur={()=>setNewTask('')}
+//           />
   
-          <List width={width}>
-            {Object.values(tasks)
-              .reverse()
-              .map((item)=>(
-                <Task
-                  key={item.id}
-                  item={item}
-                  saveTask={_saveTasks}
-                  loadTask={_loadTasks}
-                  deleteTask={_deleteTask}
-                  toggleTask={_toggleTask}
-                  updateTask={_updateTask}
-                />  
-              ))}
-          </List>  
-        </Container>
-      </ThemeProvider>
-    );
+//           <List width={width}>
+//             {Object.values(tasks)
+//               .reverse()
+//               .map((item)=>(
+//                 <Task
+//                   key={item.id}
+//                   item={item}
+//                   saveTask={_saveTasks}
+//                   loadTask={_loadTasks}
+//                   deleteTask={_deleteTask}
+//                   toggleTask={_toggleTask}
+//                   updateTask={_updateTask}
+//                 />  
+//               ))}
+//           </List>  
+//         </Container>
+//       </ThemeProvider>
+//     );
 };
 
 export default Todo;

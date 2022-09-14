@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Folkme.css'
+import './Folkme.css';
 
 export default class Folkme extends Component {
   render() {
